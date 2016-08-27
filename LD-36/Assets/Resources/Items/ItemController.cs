@@ -4,24 +4,31 @@ public class ItemController : MonoBehaviour {
   private bool isCarried = false;
   private Transform oldParent;
 
+  void FixedUpdate() {
+    if (isCarried && distanceTo(transform.parent) > 1) {
+      drop();
+    }
+  }
   private void OnTriggerEnter2D(Collider2D collision) {
     if (onLayer(collision.gameObject, "Player") && !isCarried) {
-      isCarried = true;
-      oldParent = transform.parent;
-      transform.SetParent(collision.GetComponent<ThrowingController>().Holder);
-      transform.localPosition = Vector3.zero;
+      ThrowingController playerComponent = collision.GetComponent<ThrowingController>();
+      if (playerComponent.GetItem() == gameObject || playerComponent.GetItem() == null) { 
+        isCarried = true;
+        oldParent = transform.parent;
+        transform.SetParent(playerComponent.Holder);
+        transform.localPosition = Vector3.zero;    
+      }
     }
-
-    Debug.Log("enter" + collision.name);
   }
 
-  /*private void OnTriggerExit2D(Collider2D collision) {
-    if (onLayer(collision.gameObject, "Player") && isCarried) {
-      isCarried = false;
-    }
+  private void drop() {
+    isCarried = false;
     transform.SetParent(oldParent);
-    Debug.Log("exit" + collision.name);
-  }*/
+  }
+
+  private float distanceTo(Transform other) {
+    return (other.position - transform.position).magnitude;
+  }
 
   private bool onLayer(GameObject go, string layer) {
     return go.layer == LayerMask.NameToLayer(layer);

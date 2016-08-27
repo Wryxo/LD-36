@@ -47,4 +47,8 @@ public class ThrowingController : MonoBehaviour {
   private bool onLayer(GameObject go, string layer) {
     return go.layer == LayerMask.NameToLayer(layer);
   }
+
+  public GameObject GetItem() {
+    return item;
+  }
 }

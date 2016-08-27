@@ -4,6 +4,7 @@ using System.Collections;
 public class PlatformController : MonoBehaviour {
   public GameObject ItemObject;
   public bool isBreakable;
+  public float Power;
 
 	void Start () {
 	
@@ -21,7 +22,11 @@ public class PlatformController : MonoBehaviour {
   }
 
   private void die() {
-    Instantiate(ItemObject, transform.position, Quaternion.identity);
+    GameObject item = Instantiate(ItemObject, transform.position, Quaternion.identity) as GameObject;
+    item.GetComponent<Rigidbody2D>().AddForce(
+      Vector2.up * Power,
+			ForceMode2D.Impulse
+		);
     Destroy(gameObject);
   }
 
