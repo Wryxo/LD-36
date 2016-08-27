@@ -1,23 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ItemController : MonoBehaviour {
   private bool isCarried = false;
-  private Transform objectParent;
-
-  void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
+  private Transform oldParent;
 
   private void OnTriggerEnter2D(Collider2D collision) {
     if (onLayer(collision.gameObject, "Player") && !isCarried) {
       isCarried = true;
-      objectParent = transform.parent;
-      transform.SetParent(collision.GetComponent<PlayerController>().Holder);
+      oldParent = transform.parent;
+      transform.SetParent(collision.GetComponent<ThrowingController>().Holder);
       transform.localPosition = Vector3.zero;
     }
 
@@ -28,11 +19,11 @@ public class ItemController : MonoBehaviour {
     if (onLayer(collision.gameObject, "Player") && isCarried) {
       isCarried = false;
     }
-    transform.SetParent(objectParent);
+    transform.SetParent(oldParent);
     Debug.Log("exit" + collision.name);
   }*/
 
-  protected bool onLayer(GameObject go, string layer) {
+  private bool onLayer(GameObject go, string layer) {
     return go.layer == LayerMask.NameToLayer(layer);
   }
 }

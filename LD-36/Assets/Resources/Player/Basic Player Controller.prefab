@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11405038}
   - 50: {fileID: 50000012567210952}
-  - 114: {fileID: 114000012347540740}
+  - 114: {fileID: 114000013793333286}
   m_Layer: 10
   m_Name: Basic Player Controller
   m_TagString: Untagged
@@ -44,8 +44,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.79, y: -1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -301,13 +301,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &114000012347540740
+--- !u!114 &114000013793333286
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -315,7 +315,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439f8c4b21e686f4fbf4cc9ea8c72e12, type: 3}
+  m_Script: {fileID: 11500000, guid: 67a3334e6dbd00e45bda39f3fcf2b23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Power: 1
+  Angle: 45
   Holder: {fileID: 4000011818789412}
