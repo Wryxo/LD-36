@@ -30,7 +30,7 @@ public class ThrowingController : MonoBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision) {
+	private void OnTriggerStay2D(Collider2D collision) {
     if (
 			(
 				onLayer(collision.gameObject, "Item") ||
@@ -40,8 +40,6 @@ public class ThrowingController : MonoBehaviour {
 			collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f) {
       item = collision.gameObject;
     }
-
-    Debug.Log("item++" + collision.name);
   }
 
   private bool onLayer(GameObject go, string layer) {

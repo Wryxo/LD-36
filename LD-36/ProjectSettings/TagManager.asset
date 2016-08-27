@@ -16,10 +16,10 @@ TagManager:
   - Floor
   - Waypoint
   - Player
-  - Hamster
+  - Characters
   - Item
   - ItemHamster
-  - 
+  - StaticItem
   - 
   - 
   - 

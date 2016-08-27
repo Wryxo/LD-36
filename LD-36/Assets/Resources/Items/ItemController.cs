@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class ItemController : MonoBehaviour {
+  public GameObject Bumper;
   private bool isCarried = false;
   private Transform oldParent;
 
@@ -9,14 +10,19 @@ public class ItemController : MonoBehaviour {
       drop();
     }
   }
-  private void OnTriggerEnter2D(Collider2D collision) {
-    if (onLayer(collision.gameObject, "Player") && !isCarried) {
+  private void OnTriggerStay2D(Collider2D collision) {
+    if (
+      onLayer(collision.gameObject, "Player") && 
+      !isCarried && 
+      gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f
+      ) {
       ThrowingController playerComponent = collision.GetComponent<ThrowingController>();
       if (playerComponent.GetItem() == gameObject || playerComponent.GetItem() == null) { 
         isCarried = true;
         oldParent = transform.parent;
         transform.SetParent(playerComponent.Holder);
-        transform.localPosition = Vector3.zero;    
+        transform.localPosition = Vector3.zero;
+        Bumper.layer = LayerMask.NameToLayer("Item");
       }
     }
   }
@@ -24,6 +30,7 @@ public class ItemController : MonoBehaviour {
   private void drop() {
     isCarried = false;
     transform.SetParent(oldParent);
+    Bumper.layer = LayerMask.NameToLayer("StaticItem");
   }
 
   private float distanceTo(Transform other) {
