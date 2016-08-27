@@ -14,11 +14,11 @@ TagManager:
   - 
   - 
   - Floor
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Waypoint
+  - Player
+  - Hamster
+  - Item
+  - ItemHamster
   - 
   - 
   - 
