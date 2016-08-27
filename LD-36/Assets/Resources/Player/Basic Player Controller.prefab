@@ -116,12 +116,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d522286c13b9ff41b33ba3ff16074d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticEnvLayerMask: {}
+  staticEnvLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   envCheckDistance: 0.02
   minDistanceFromEnv: 0.01
   numOfIterations: 2
   enableOneWayPlatforms: 1
-  movingPlatformLayerMask: {}
+  movingPlatformLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   additionalRaycastsPerSide: 0
   groundSpeed: 8
   timeToGroundSpeed: 0.1
