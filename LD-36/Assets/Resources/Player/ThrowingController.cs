@@ -14,23 +14,29 @@ public class ThrowingController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-	void FixedUpdate() {
-		float xInput = Input.GetAxis("Horizontal");
-		if (Mathf.Abs(xInput) > 0.001f)
-			facing = xInput > 0 ? 1 : -1;
+  void FixedUpdate() {
+    float xInput = Input.GetAxis("Horizontal");
+    if (Mathf.Abs(xInput) > 0.001f)
+      facing = xInput > 0 ? 1 : -1;
 
-		if (Input.GetButton("Fire1") && item != null) {
-			float direction = Angle / 180 * Mathf.PI;
-			item.GetComponent<Rigidbody2D>().AddForce(
-				new Vector2(Mathf.Sin(direction) * facing, Mathf.Cos(direction)) * Power + rb.velocity,
-				ForceMode2D.Impulse
-			);
+    if (Input.GetButton("Fire1") && item != null) {
+      float direction = Angle / 180 * Mathf.PI;
+      item.GetComponent<Rigidbody2D>().AddForce(
+        new Vector2(Mathf.Sin(direction) * facing, Mathf.Cos(direction)) * Power + rb.velocity,
+        ForceMode2D.Impulse
+      );
 
-			item = null;
-		}
-	}
+      item = null;
+    }
+  }
 
-	private void OnTriggerStay2D(Collider2D collision) {
+  void OnCollisionEnter2D(Collision2D collision) {
+    if (onLayer(collision.gameObject, "Enemy")) {
+      die();
+    }
+  }
+
+  void OnTriggerStay2D(Collider2D collision) {
     if (
 			(
 				onLayer(collision.gameObject, "Item") ||
@@ -40,6 +46,10 @@ public class ThrowingController : MonoBehaviour {
 			collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f) {
       item = collision.gameObject;
     }
+  }
+
+  private void die() {
+    transform.position = initPosition;
   }
 
   private bool onLayer(GameObject go, string layer) {
