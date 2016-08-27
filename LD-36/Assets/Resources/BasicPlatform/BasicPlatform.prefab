@@ -21,6 +21,8 @@ GameObject:
   - 4: {fileID: 4000011331553672}
   - 212: {fileID: 212000010199054048}
   - 61: {fileID: 61000010481812244}
+  - 61: {fileID: 61000010327128678}
+  - 114: {fileID: 114000012808652520}
   m_Layer: 8
   m_Name: BasicPlatform
   m_TagString: Untagged
@@ -35,12 +37,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013997848410}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5554683, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &61000010327128678
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013997848410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.27}
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.5}
 --- !u!61 &61000010481812244
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -55,6 +71,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &114000012808652520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013997848410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90606c50c1d64b4b9905f983404207e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemObject: {fileID: 1000013554991538, guid: 12e5cbdd157dbce42b8b676c6b344e6d, type: 2}
+  isBreakable: 1
 --- !u!212 &212000010199054048
 SpriteRenderer:
   m_ObjectHideFlags: 1
