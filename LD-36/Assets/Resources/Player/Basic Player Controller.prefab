@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 114000013793333286}
   m_Layer: 10
   m_Name: Basic Player Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,6 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a3334e6dbd00e45bda39f3fcf2b23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 20
+  Power: 80
   Angle: 45
   Hodor: {fileID: 1000013877697348, guid: bc597928907beba4a8b236f4814ba8e6, type: 2}

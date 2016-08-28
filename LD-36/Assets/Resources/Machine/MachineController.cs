@@ -6,19 +6,23 @@ public class MachineController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool flying = false;
+	private ItemController[] items;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate() {
-		if (flying || Input.GetButton("Fire2")) Fly();
+		if (flying) Fly();
 	}
 
 	public void Fly() {
-		flying = true;
-		rb.isKinematic = false;
-		ItemController[] items = GetComponentsInChildren<ItemController>();
+		if (!flying) {
+			flying = true;
+			rb.isKinematic = false;
+			items = GetComponentsInChildren<ItemController>();
+		}
+
 		foreach (ItemController ic in items) {
 			if (ic.gameObject.tag != "Bouncy") continue;
 

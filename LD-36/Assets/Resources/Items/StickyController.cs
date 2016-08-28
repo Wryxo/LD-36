@@ -75,8 +75,13 @@ public class StickyController : MonoBehaviour {
 			thisGO.layer = LayerMask.NameToLayer("StaticItem");
 			gameObject.layer = LayerMask.NameToLayer("StaticItem");
 			thisGO.tag = thisGO.tag == "Fan" ? "Bouncy" : "Sticky";
+			thisGO.transform.position = new Vector3(
+				thisGO.transform.position.x, thisGO.transform.position.y, -2f
+			);
+
 			thisGO.GetComponent<HingeJoint2D>().connectedBody = otherGO.GetComponent<Rigidbody2D>();
 			thisGO.GetComponent<HingeJoint2D>().enabled = true;
+
 			stuck = true;
 		}
 	}

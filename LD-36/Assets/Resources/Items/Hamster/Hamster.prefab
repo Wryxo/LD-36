@@ -175,7 +175,6 @@ MonoBehaviour:
   HamsterObject: {fileID: 1000013814919554, guid: 8ab68bd088369bf43961577cdc134c1d,
     type: 2}
   WakeUpTimer: 1
-  wasThrown: 0
 --- !u!212 &212000013222365820
 SpriteRenderer:
   m_ObjectHideFlags: 1

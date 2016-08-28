@@ -9,6 +9,8 @@ TagManager:
   - Fan
   - Bouncy
   - Timer
+  - Level
+  - EndGamePlatform
   layers:
   - Default
   - TransparentFX

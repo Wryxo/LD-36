@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011358579614}
   - 212: {fileID: 212000011861710898}
+  - 61: {fileID: 61000012950795552}
   - 61: {fileID: 61000013466498430}
   - 50: {fileID: 50000012187325660}
   - 114: {fileID: 114000010736919134}
@@ -60,6 +61,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61000012950795552
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013605122958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
 --- !u!61 &61000013466498430
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -85,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7fc2c8caaa0674d86a800c99ffdf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HamsterCount: 0
-  HamsterPower: 1
+  HamsterCount: 2
+  HamsterPower: 500
 --- !u!212 &212000011861710898
 SpriteRenderer:
   m_ObjectHideFlags: 1
