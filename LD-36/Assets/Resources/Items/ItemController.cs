@@ -3,20 +3,17 @@
 public class ItemController : MonoBehaviour {
   public GameObject Bumper;
   public float HodorDropRange;
-  public GameObject Player;
 
   private bool isCarried = false;
   private Transform oldParent;
   private ThrowingController playerController;
-
-  void Start() {
-  }
 
   void FixedUpdate() {
     if (isCarried && distanceTo(transform.parent) > HodorDropRange) {
       Drop();
     }
   }
+
   private void OnTriggerStay2D(Collider2D collision) {
     if (
       onLayer(collision.gameObject, "Player") && 
@@ -40,6 +37,9 @@ public class ItemController : MonoBehaviour {
     isCarried = false;
     transform.SetParent(oldParent);
     Bumper.layer = LayerMask.NameToLayer("StaticItem");
+    if (gameObject.layer == LayerMask.NameToLayer("ItemHamster")) {
+      gameObject.GetComponent<HamsterController>().wasThrown = true;
+    }
   }
 
   private float distanceTo(Transform other) {

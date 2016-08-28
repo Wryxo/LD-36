@@ -41,6 +41,7 @@ GameObject:
   - 61: {fileID: 61000011499129686}
   - 50: {fileID: 50000011610293414}
   - 114: {fileID: 114000012829376712}
+  - 114: {fileID: 114000013461543618}
   m_Layer: 13
   m_Name: Hamster
   m_TagString: Untagged
@@ -160,7 +161,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bumper: {fileID: 1000011617622338}
   HodorDropRange: 1
-  Player: {fileID: 100000, guid: f53f0e5cd92ba5148aace93d59b06aaf, type: 2}
+--- !u!114 &114000013461543618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012816713078}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd18cde5cabaca249b92059d2cf6dbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HamsterObject: {fileID: 1000013814919554, guid: 8ab68bd088369bf43961577cdc134c1d,
+    type: 2}
+  WakeUpTimer: 1
+  wasThrown: 0
 --- !u!212 &212000013222365820
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,7 +13,6 @@ public class PlatformController : MonoBehaviour {
     if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && isBreakable) {
       die();
     }
-    Debug.Log(collision.gameObject.layer + " " + LayerMask.NameToLayer("Player"));
   }
 
   private void die() {
