@@ -19,7 +19,7 @@ public class ItemController : MonoBehaviour {
       onLayer(collision.gameObject, "Player") &&
       !isCarried &&
       gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f &&
-      gameObject.tag != "Sticky"
+      gameObject.tag != "Sticky" && gameObject.tag != "Bouncy"
       ) {
       playerController = collision.GetComponent<ThrowingController>();
       Transform hodor = playerController.GetHodor(gameObject);
@@ -38,9 +38,6 @@ public class ItemController : MonoBehaviour {
     isCarried = false;
     transform.SetParent(oldParent);
     Bumper.layer = LayerMask.NameToLayer("HeadItem");
-    if (gameObject.layer == LayerMask.NameToLayer("ItemHamster")) {
-      gameObject.GetComponent<HamsterController>().wasThrown = true;
-    }
   }
 
   private float distanceTo(Transform other) {

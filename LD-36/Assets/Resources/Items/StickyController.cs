@@ -70,10 +70,13 @@ public class StickyController : MonoBehaviour {
 			}
 
 			thisGO.GetComponent<ItemController>().Drop();
+			thisGO.transform.SetParent(GameObject.FindGameObjectWithTag("Engine").transform);
+
 			thisGO.layer = LayerMask.NameToLayer("StaticItem");
 			gameObject.layer = LayerMask.NameToLayer("StaticItem");
-			if (thisGO.tag != "Bouncy") thisGO.tag = "Sticky";
-			thisGO.GetComponent<Rigidbody2D>().isKinematic = true;
+			thisGO.tag = thisGO.tag == "Fan" ? "Bouncy" : "Sticky";
+			thisGO.GetComponent<HingeJoint2D>().connectedBody = otherGO.GetComponent<Rigidbody2D>();
+			thisGO.GetComponent<HingeJoint2D>().enabled = true;
 			stuck = true;
 		}
 	}
