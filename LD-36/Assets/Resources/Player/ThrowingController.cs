@@ -6,15 +6,20 @@ public class ThrowingController : MonoBehaviour {
 	public GameObject Hodor;
 
 	private Vector2 initPosition;
+  private bool dying;
 	private int facing = 1;
   private List<Transform> hodors = new List<Transform>();
   private Rigidbody2D rb;
+  private PlatformerMotor2D platformMotor;
+  private BoxCollider2D boxCollider;
 
-	void Start () {
+  void Start () {
     initPosition = transform.position;
 		rb = GetComponent<Rigidbody2D>();
+    platformMotor = GetComponent<PlatformerMotor2D>();
+    boxCollider = GetComponent<BoxCollider2D>();
 
-		// generate hodors
+    // generate hodors
     for (int i = 0; i < 5; i++) {
       GameObject hodorObject = Instantiate(
         Hodor,
@@ -26,18 +31,23 @@ public class ThrowingController : MonoBehaviour {
     }
   }
 
-	void FixedUpdate() {
-		float xInput = Input.GetAxis("Horizontal");
-		if (Mathf.Abs(xInput) > 0.001f)
-			facing = xInput > 0 ? 1 : -1;
+  void FixedUpdate() {
+    if (!dying) {
+      float xInput = Input.GetAxis("Horizontal");
+      if (Mathf.Abs(xInput) > 0.001f)
+        facing = xInput > 0 ? 1 : -1;
 
-		if (Input.GetButton("Fire1")) {
-          fireAllItems();
-        }
+      if (Input.GetButton("Fire1")) {
+        fireAllItems();
+      }
+    }
 	}
 
-  void OnCollisionEnter2D(Collision2D collision) {
-    if (onLayer(collision.gameObject, "Enemy")) {
+  void OnTriggerEnter2D(Collider2D collision) {
+    // hit enemy
+    if (onLayer(collision.gameObject, "EnemyCollider") && !dying) {
+      dying = true;
+      // drop items
       foreach (var item in GetComponentsInChildren<ItemController>()) {
         float direction = Random.Range(-45.0f, 45.0f) / 180 * Mathf.PI;
         item.GetComponent<Rigidbody2D>().AddForce(
@@ -46,20 +56,33 @@ public class ThrowingController : MonoBehaviour {
         );
         item.Drop();
       }
-      Invoke("die", 0.1f);
+
+      // throw player
+      platformMotor.enabled = false;
+      boxCollider.enabled = false;
+
+      float dir = Random.Range(-45.0f, 45.0f) / 180 * Mathf.PI;
+      rb.velocity = Vector3.zero;
+      rb.AddForce(
+        Vector2.up * 40,
+        ForceMode2D.Impulse
+      );
+      Invoke("die", 2.0f);
     }
+  }
+
+  private void die() {
+    transform.position = initPosition;
+    platformMotor.enabled = true;
+    boxCollider.enabled = true;
+    dying = false;
   }
 
   private bool onLayer(GameObject go, string layer) {
     return go.layer == LayerMask.NameToLayer(layer);
   }
 
-  private void die() {
-    transform.position = initPosition;
-  }
-
   private void fireAllItems() {
-    //for (int i = 0; i < items.Count; i++) {
     foreach(var item in GetComponentsInChildren<ItemController>()) {
       float direction = Angle / 180 * Mathf.PI;
       item.GetComponent<Rigidbody2D>().AddForce(
@@ -69,8 +92,6 @@ public class ThrowingController : MonoBehaviour {
       );
       item.Drop();
     }
-
-
   }
 
   public Transform GetHodor(GameObject item) {
