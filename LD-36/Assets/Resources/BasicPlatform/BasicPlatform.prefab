@@ -83,8 +83,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemObject: {fileID: 1000011283060668, guid: 361317c93cc7e12468a06da24ee78cb5, type: 2}
+  WaypointObject: {fileID: 1000012729027540, guid: 8f4e6cec393e0c044b7b69b93aea8bc6,
+    type: 2}
   isBreakable: 1
   Power: 20
+  WaypointPositionUp: 1
+  WaypointPositionSides: 1
 --- !u!212 &212000010199054048
 SpriteRenderer:
   m_ObjectHideFlags: 1

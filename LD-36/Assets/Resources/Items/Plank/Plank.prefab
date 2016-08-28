@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bc06d85e4eaab4f8e028475690aaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BouncePower: 80
+  BounceAngle: 45
 --- !u!114 &114000012003380374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,6 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bumper: {fileID: 1000012348427292}
+  HodorDropRange: 1
+  Player: {fileID: 100000, guid: f53f0e5cd92ba5148aace93d59b06aaf, type: 2}
 --- !u!212 &212000014186259706
 SpriteRenderer:
   m_ObjectHideFlags: 1

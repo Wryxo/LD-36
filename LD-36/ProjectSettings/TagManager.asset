@@ -19,11 +19,11 @@ TagManager:
   - Floor
   - Waypoint
   - Player
-  - Characters
+  - Hamster
   - Item
   - ItemHamster
   - StaticItem
-  - 
+  - Enemy
   - 
   - 
   - 
