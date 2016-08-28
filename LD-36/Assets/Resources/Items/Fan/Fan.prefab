@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bumper: {fileID: 1000011855037884}
+  HodorDropRange: 1
+  Player: {fileID: 100000, guid: f53f0e5cd92ba5148aace93d59b06aaf, type: 2}
 --- !u!212 &212000010780436970
 SpriteRenderer:
   m_ObjectHideFlags: 1
