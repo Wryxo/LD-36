@@ -16,13 +16,14 @@ public class ItemController : MonoBehaviour {
 
   private void OnTriggerStay2D(Collider2D collision) {
     if (
-      onLayer(collision.gameObject, "Player") && 
-      !isCarried && 
-      gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f
+      onLayer(collision.gameObject, "Player") &&
+      !isCarried &&
+      gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f &&
+      gameObject.tag != "Sticky"
       ) {
       playerController = collision.GetComponent<ThrowingController>();
       Transform hodor = playerController.GetHodor(gameObject);
-      
+
       if (hodor != null) {
         isCarried = true;
         oldParent = transform.parent;

@@ -32,12 +32,9 @@ public class StickyController : MonoBehaviour {
 		)	{
 			Sprite otherSprite = otherGO.GetComponent<SpriteRenderer>().sprite;
 			Sprite thisSprite = thisGO.GetComponent<SpriteRenderer>().sprite;
-            float offset = otherGO.transform.lossyScale.x / (collider.gameObject.tag == "Engine" ? 1 : 2) + thisGO.transform.lossyScale.x / 2;
-            /*collider.gameObject.tag == "Engine" ?
-            otherGO.transform.localScale.x / 4:
-            otherGO.transform.localScale.x / 3;*/
+			float offset = otherGO.transform.lossyScale.x / (collider.gameObject.tag == "Engine" ? 1 : 2) + thisGO.transform.lossyScale.x / 2;
 
-            Vector3 colVector = thisGO.transform.position - otherGO.transform.position;
+			Vector3 colVector = thisGO.transform.position - otherGO.transform.position;
 			if (Mathf.Abs(colVector.x) > Mathf.Abs(colVector.y)) {
 				if (colVector.x <= 0) {
 					// left side
@@ -72,9 +69,10 @@ public class StickyController : MonoBehaviour {
 				}
 			}
 
+			thisGO.GetComponent<ItemController>().Drop();
 			thisGO.layer = LayerMask.NameToLayer("StaticItem");
-            gameObject.layer = LayerMask.NameToLayer("StaticItem");
-            if (thisGO.tag != "Bouncy") thisGO.tag = "Sticky";
+			gameObject.layer = LayerMask.NameToLayer("StaticItem");
+			if (thisGO.tag != "Bouncy") thisGO.tag = "Sticky";
 			thisGO.GetComponent<Rigidbody2D>().isKinematic = true;
 			stuck = true;
 		}
