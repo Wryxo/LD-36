@@ -9,6 +9,7 @@ TagManager:
   - Fan
   - Bouncy
   - Timer
+  - HamsterItem
   layers:
   - Default
   - TransparentFX

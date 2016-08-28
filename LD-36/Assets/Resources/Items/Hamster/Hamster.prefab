@@ -44,7 +44,7 @@ GameObject:
   - 114: {fileID: 114000013461543618}
   m_Layer: 13
   m_Name: Hamster
-  m_TagString: Untagged
+  m_TagString: HamsterItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,6 @@ MonoBehaviour:
   HamsterObject: {fileID: 1000013814919554, guid: 8ab68bd088369bf43961577cdc134c1d,
     type: 2}
   WakeUpTimer: 1
-  wasThrown: 0
 --- !u!212 &212000013222365820
 SpriteRenderer:
   m_ObjectHideFlags: 1
