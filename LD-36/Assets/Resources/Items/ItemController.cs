@@ -19,7 +19,7 @@ public class ItemController : MonoBehaviour {
       onLayer(collision.gameObject, "Player") &&
       !isCarried &&
       gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f &&
-      gameObject.tag != "Sticky"
+      gameObject.tag != "Sticky" && gameObject.tag != "Bouncy"
       ) {
       playerController = collision.GetComponent<ThrowingController>();
       Transform hodor = playerController.GetHodor(gameObject);
