@@ -28,7 +28,7 @@ public class ItemController : MonoBehaviour {
         oldParent = transform.parent;
         transform.SetParent(hodor);
         transform.position = hodor.position;
-        //Bumper.layer = LayerMask.NameToLayer("Item");
+        Bumper.layer = LayerMask.NameToLayer("HeadItem");
       }
     }
   }
@@ -36,7 +36,7 @@ public class ItemController : MonoBehaviour {
   public void Drop() {
     isCarried = false;
     transform.SetParent(oldParent);
-    Bumper.layer = LayerMask.NameToLayer("StaticItem");
+    Bumper.layer = LayerMask.NameToLayer("HeadItem");
     if (gameObject.layer == LayerMask.NameToLayer("ItemHamster")) {
       gameObject.GetComponent<HamsterController>().wasThrown = true;
     }

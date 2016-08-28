@@ -22,7 +22,7 @@ GameObject:
   - 61: {fileID: 61000011604214982}
   - 61: {fileID: 61000013902156432}
   - 114: {fileID: 114000011345137704}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

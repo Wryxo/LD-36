@@ -18,7 +18,7 @@ public class ThrowingController : MonoBehaviour {
     for (int i = 0; i < 5; i++) {
       GameObject hodorObject = Instantiate(
         Hodor,
-        new Vector2(transform.position.x, transform.position.y + 0.75f + i * 2.0f / 3.0f),
+        new Vector2(transform.position.x, transform.position.y + 1 + i * 1.1f),
         Quaternion.identity
         ) as GameObject;
       hodorObject.transform.SetParent(gameObject.transform);
@@ -32,8 +32,8 @@ public class ThrowingController : MonoBehaviour {
 			facing = xInput > 0 ? 1 : -1;
 
 		if (Input.GetButton("Fire1")) {
-      fireAllItems();
-    }
+          fireAllItems();
+        }
 	}
 
   void OnCollisionEnter2D(Collision2D collision) {
@@ -63,9 +63,11 @@ public class ThrowingController : MonoBehaviour {
     foreach(var item in GetComponentsInChildren<ItemController>()) {
       float direction = Angle / 180 * Mathf.PI;
       item.GetComponent<Rigidbody2D>().AddForce(
-        new Vector2(Mathf.Sin(direction) * facing, Mathf.Cos(direction)) * Power,
+        new Vector2(Mathf.Sin(direction) * facing, Mathf.Cos(direction)) * Power +
+          (GetComponent<PlatformerMotor2D>().velocity * item.GetComponent<Rigidbody2D>().mass),
         ForceMode2D.Impulse
       );
+      item.Drop();
     }
 
 

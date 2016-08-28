@@ -41,7 +41,7 @@ GameObject:
   - 61: {fileID: 61000014218629608}
   - 61: {fileID: 61000011069503356}
   - 114: {fileID: 114000010861301570}
-  m_Layer: 14
+  m_Layer: 16
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bumper: {fileID: 1000012348427292}
   HodorDropRange: 1
-  Player: {fileID: 100000, guid: f53f0e5cd92ba5148aace93d59b06aaf, type: 2}
 --- !u!212 &212000014186259706
 SpriteRenderer:
   m_ObjectHideFlags: 1
