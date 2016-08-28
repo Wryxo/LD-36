@@ -22,7 +22,8 @@ public class ThrowingController : MonoBehaviour {
 		if (Input.GetButton("Fire1") && item != null) {
 			float direction = Angle / 180 * Mathf.PI;
 			item.GetComponent<Rigidbody2D>().AddForce(
-				new Vector2(Mathf.Sin(direction) * facing, Mathf.Cos(direction)) * Power + rb.velocity,
+				new Vector2(Mathf.Sin(direction) * facing, Mathf.Cos(direction)) * Power +
+					GetComponent<PlatformerMotor2D>().velocity,
 				ForceMode2D.Impulse
 			);
 
