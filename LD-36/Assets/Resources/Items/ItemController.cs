@@ -2,12 +2,19 @@
 
 public class ItemController : MonoBehaviour {
   public GameObject Bumper;
+  public float HodorDropRange;
+  public GameObject Player;
+
   private bool isCarried = false;
   private Transform oldParent;
+  private ThrowingController playerController;
+
+  void Start() {
+  }
 
   void FixedUpdate() {
-    if (isCarried && distanceTo(transform.parent) > 1) {
-      drop();
+    if (isCarried && distanceTo(transform.parent) > HodorDropRange) {
+      Drop();
     }
   }
   private void OnTriggerStay2D(Collider2D collision) {
@@ -16,18 +23,20 @@ public class ItemController : MonoBehaviour {
       !isCarried && 
       gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 0.001f
       ) {
-      ThrowingController playerComponent = collision.GetComponent<ThrowingController>();
-      if (playerComponent.GetItem() == gameObject || playerComponent.GetItem() == null) { 
+      playerController = collision.GetComponent<ThrowingController>();
+      Transform hodor = playerController.GetHodor(gameObject);
+      
+      if (hodor != null) {
         isCarried = true;
         oldParent = transform.parent;
-        transform.SetParent(playerComponent.Holder);
-        transform.localPosition = Vector3.zero;
-        Bumper.layer = LayerMask.NameToLayer("Item");
+        transform.SetParent(hodor);
+        transform.position = hodor.position;
+        //Bumper.layer = LayerMask.NameToLayer("Item");
       }
     }
   }
 
-  private void drop() {
+  public void Drop() {
     isCarried = false;
     transform.SetParent(oldParent);
     Bumper.layer = LayerMask.NameToLayer("StaticItem");
