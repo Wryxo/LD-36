@@ -8,7 +8,8 @@ public class CharacterController : MonoBehaviour {
   public float Speed;
 
   void Start() {
-    direction = (Random.Range(0, 2) % 2 == 0) ? 1 : -1;
+    direction = (Random.Range(0, 2) % 2 == 0) ? -1 : 1;
+    transform.localScale = new Vector2(transform.localScale.x * direction, transform.localScale.y);
   }
 
   void FixedUpdate() {
@@ -18,6 +19,7 @@ public class CharacterController : MonoBehaviour {
   void OnTriggerEnter2D(Collider2D collision) {
     if (collision.gameObject.layer == LayerMask.NameToLayer("Waypoint")) {
       direction *= -1;
+      transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
     } else if (collision.gameObject.layer == LayerMask.NameToLayer("Item") && !isMoving(collision.gameObject)) {
       die();
     }

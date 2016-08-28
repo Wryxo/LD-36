@@ -23,6 +23,7 @@ GameObject:
   - 61: {fileID: 61000010481812244}
   - 61: {fileID: 61000010327128678}
   - 114: {fileID: 114000012808652520}
+  - 114: {fileID: 114000012640925016}
   m_Layer: 8
   m_Name: BasicPlatform
   m_TagString: Untagged
@@ -71,6 +72,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &114000012640925016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013997848410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90606c50c1d64b4b9905f983404207e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemObject: {fileID: 0}
+  WaypointObject: {fileID: 0}
+  isBreakable: 0
+  Power: 0
+  WaypointPositionUp: 0
+  WaypointPositionSides: 0
 --- !u!114 &114000012808652520
 MonoBehaviour:
   m_ObjectHideFlags: 1
