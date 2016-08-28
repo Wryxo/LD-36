@@ -31,13 +31,17 @@ namespace PC2D
         // Update is called once per frame
         void Update()
         {
-            if (_motor.motorState == PlatformerMotor2D.MotorState.Jumping ||
+            int count = GetComponentsInChildren<ItemController>().Length;
+            /*
+             * ||
                 _isJumping &&
                     (_motor.motorState == PlatformerMotor2D.MotorState.Falling ||
-                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast))
+                                 _motor.motorState == PlatformerMotor2D.MotorState.FallingFast)
+             */
+            if (_motor.motorState == PlatformerMotor2D.MotorState.Jumping)
             {
                 _isJumping = true;
-                _animator.Play("Jump");
+                _animator.Play(count > 0 ? "JumpItem" : "Jump");
 
                 if (_motor.velocity.x <= -0.1f)
                 {
@@ -49,7 +53,7 @@ namespace PC2D
                 }
 
                 Vector3 rotateDir = _currentFacingLeft ? Vector3.forward : Vector3.back;
-                visualChild.transform.Rotate(rotateDir, jumpRotationSpeed * Time.deltaTime);
+                //visualChild.transform.Rotate(rotateDir, jumpRotationSpeed * Time.deltaTime);
             }
             else
             {
@@ -59,7 +63,7 @@ namespace PC2D
                 if (_motor.motorState == PlatformerMotor2D.MotorState.Falling ||
                                  _motor.motorState == PlatformerMotor2D.MotorState.FallingFast)
                 {
-                    _animator.Play("Fall");
+                    _animator.Play(count > 0 ? "FallItem" : "Fall");
                 }
                 else if (_motor.motorState == PlatformerMotor2D.MotorState.WallSliding ||
                          _motor.motorState == PlatformerMotor2D.MotorState.WallSticking)
@@ -82,11 +86,11 @@ namespace PC2D
                 {
                     if (_motor.velocity.sqrMagnitude >= 0.1f * 0.1f)
                     {
-                        _animator.Play("Walk");
+                        _animator.Play(count > 0 ? "WalkItem" : "Walk");
                     }
                     else
                     {
-                        _animator.Play("Idle");
+                        _animator.Play(count > 0 ? "IdleItem" : "Idle");
                     }
                 }
             }
