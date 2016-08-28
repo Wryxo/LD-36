@@ -5,18 +5,18 @@ public class StickyController : MonoBehaviour {
 	private bool stuck = false;
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		if (
-			collider.gameObject.tag != "Engine" &&
-			collider.gameObject.tag != "Sticky" ||
+    GameObject thisGO = transform.parent.gameObject;
+    GameObject otherGO = collider.gameObject;
+
+    if (
+			!onLayer(otherGO, "StaticItem") ||
 			stuck
 		)
 			return;
 
-		GameObject thisGO = transform.parent.gameObject;
-		GameObject otherGO = collider.gameObject;
-
-		if (onLayer(thisGO, "ItemHamster") && otherGO.tag == "Engine") {
-			otherGO.GetComponent<MachineController>().HamsterCount += 1;
+    Debug.Log(thisGO.name + " " + otherGO.name);
+		if (onLayer(thisGO, "ItemHamster") && onLayer(otherGO, "StaticItem")) {
+			GameObject.FindGameObjectWithTag("Engine").GetComponent<MachineController>().HamsterCount += 1;
 			Destroy(thisGO);
 		} else if (!onLayer(thisGO, "ItemHamster") && otherGO.tag == "Bouncy") {
 			float direction = BounceAngle / 180 * Mathf.PI;
@@ -27,8 +27,9 @@ public class StickyController : MonoBehaviour {
 				ForceMode2D.Impulse
 			);
 		} else if (
-			onLayer(collider.gameObject, "StaticItem") &&
-			(collider.gameObject.tag == "Engine" || collider.gameObject.tag == "Sticky")
+      !onLayer(thisGO, "ItemHamster") &&
+			onLayer(otherGO, "StaticItem") &&
+			(otherGO.tag == "Engine" || otherGO.tag == "Sticky")
 		)	{
 			Sprite otherSprite = otherGO.GetComponent<SpriteRenderer>().sprite;
 			Sprite thisSprite = thisGO.GetComponent<SpriteRenderer>().sprite;
