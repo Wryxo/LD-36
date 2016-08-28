@@ -38,9 +38,6 @@ public class ItemController : MonoBehaviour {
     isCarried = false;
     transform.SetParent(oldParent);
     Bumper.layer = LayerMask.NameToLayer("HeadItem");
-    if (gameObject.layer == LayerMask.NameToLayer("ItemHamster")) {
-      gameObject.GetComponent<HamsterController>().wasThrown = true;
-    }
   }
 
   private float distanceTo(Transform other) {

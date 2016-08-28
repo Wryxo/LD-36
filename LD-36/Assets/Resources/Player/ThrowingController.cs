@@ -61,7 +61,6 @@ public class ThrowingController : MonoBehaviour {
       platformMotor.enabled = false;
       boxCollider.enabled = false;
 
-      float dir = Random.Range(-45.0f, 45.0f) / 180 * Mathf.PI;
       rb.velocity = Vector3.zero;
       rb.AddForce(
         Vector2.up * 40,
