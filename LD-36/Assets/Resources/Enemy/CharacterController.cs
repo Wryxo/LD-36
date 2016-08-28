@@ -30,7 +30,12 @@ public class CharacterController : MonoBehaviour {
   }
 
   private void die() {
-    Instantiate(ItemObject, transform.position, Quaternion.identity);
+    /* dirty fix */
+    GetComponent<SpriteRenderer>().enabled = false;
+    Vector3 position = transform.position;
+    transform.position = new Vector3(5000, 5000, -5000);
+    /**/
+    Instantiate(ItemObject, position, Quaternion.identity);
     Destroy(gameObject);
   }
 }

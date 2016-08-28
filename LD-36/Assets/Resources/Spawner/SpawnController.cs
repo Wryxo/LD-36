@@ -2,30 +2,33 @@
 using System.Collections;
 
 public class SpawnController : MonoBehaviour {
-  public GameObject Hamsters;
-  public GameObject Enemies;
+  public GameObject[] parentObjects = new GameObject[3];
+  public GameObject[] objects = new GameObject[3];
+  public int[] maxCount = new int[3];
+  private int[] oldCount = new int[3];
 
-  public GameObject HamsterObject;
-  public GameObject EnemyObject;
-
-  public int HamstersCount;
-  public int EnemiesCount;
-
-  private int oldHamstersCount = -1;
-  private int oldEnemiesCount = -1;
-
-  void FixedUpdate() {
-    check(ref oldEnemiesCount, Enemies.transform.childCount);
-    check(ref oldHamstersCount, Hamsters.transform.childCount);
+  void Awake() {
+    setChildrenCount();
   }
 
-  private void check(ref int oldCount, int newCount) {
-    if (oldCount == -1) oldCount = newCount;
+  void FixedUpdate() {
+    respawn();
+    setChildrenCount();
+  }
 
-    if (newCount < oldCount) {
-      spawn(EnemyObject, getRandomSpawn(), Enemies.transform);
-      spawn(HamsterObject, getRandomSpawn(), Hamsters.transform);
-      oldCount = newCount + 1;
+
+  private void setChildrenCount() {
+    for (int i = 0; i < oldCount.Length; i++) {
+      oldCount[i] = parentObjects[i].transform.childCount;
+    }
+  }
+  private void respawn() {
+    for (int i = 0; i < objects.Length; i++) {
+      if (parentObjects[i].transform.childCount < oldCount[i]) {
+        for (int j = 0; j < objects.Length; j++) {
+          spawnObject(j, getRandomSpawn());
+        }
+      }
     }
   }
 
@@ -34,8 +37,11 @@ public class SpawnController : MonoBehaviour {
     return transform.GetChild(spawn).transform.position;
   }
 
-  private void spawn(GameObject spawnObject, Vector3 spawnPosition, Transform parent) {
-    GameObject ego = Instantiate(spawnObject, parent) as GameObject;
-    ego.transform.position = spawnPosition;
+  private void spawnObject(int index, Vector3 spawnPosition) {
+    if (!(parentObjects[index].transform.childCount >= maxCount[index])) {
+      GameObject ego = Instantiate(objects[index], parentObjects[index].transform) as GameObject;
+      ego.transform.position = spawnPosition;
+    }
+    
   }
 }
