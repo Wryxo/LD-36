@@ -8,6 +8,7 @@ namespace PC2D
     public Transform Target;
     public float OffsetX;
     public float OffsetY;
+    public bool FollowingPlayer = true;
 
     // Update is called once per frame
     void Update()
@@ -25,8 +26,10 @@ namespace PC2D
       {
         pos.y = Target.position.y - ((Target.position.y > transform.position.y) ? OffsetY : -OffsetY);
       }
-      pos.x = Mathf.Clamp(pos.x, -21.0f, 26.2f);
-      pos.y = Mathf.Clamp(pos.y, -6.0f, 12.9f);
+      if (FollowingPlayer) { 
+        pos.x = Mathf.Clamp(pos.x, -21.0f, 26.2f);
+        pos.y = Mathf.Clamp(pos.y, -6.0f, 12.9f);
+      }
       transform.position = pos;
     }
   }
