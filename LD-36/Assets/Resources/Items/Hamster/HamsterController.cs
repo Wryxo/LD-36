@@ -20,10 +20,12 @@ public class HamsterController : MonoBehaviour {
   }
 
   private void wakeUp() {
+    Debug.Log("log");
     if (!(transform.parent != null && transform.parent.name.Contains("Hodor"))) {
         GameObject hamster = Instantiate(HamsterObject, transform.position, Quaternion.identity) as GameObject;
       hamster.transform.SetParent(GameObject.Find("Hamsters").transform);  
       Destroy(gameObject);
     }
+    wakingUp = false;
   }
 }
