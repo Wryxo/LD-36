@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public class ThrowingController : MonoBehaviour {
 	public float Power, Angle;
 	public GameObject Hodor;
+  public List<Transform> Hodors = new List<Transform>();
 
-	private Vector2 initPosition;
+  private Vector2 initPosition;
   private bool dying;
 	private int facing = 1;
-  private List<Transform> hodors = new List<Transform>();
   private Rigidbody2D rb;
   private PlatformerMotor2D platformMotor;
   private BoxCollider2D boxCollider;
@@ -23,11 +23,11 @@ public class ThrowingController : MonoBehaviour {
     for (int i = 0; i < 5; i++) {
       GameObject hodorObject = Instantiate(
         Hodor,
-        new Vector2(transform.position.x, transform.position.y + 1 + i * 1.1f),
+        new Vector2(transform.position.x, transform.position.y + 1.4f + i * 1.0f),
         Quaternion.identity
         ) as GameObject;
       hodorObject.transform.SetParent(gameObject.transform);
-      hodors.Add(hodorObject.transform);
+      Hodors.Add(hodorObject.transform);
     }
   }
 
@@ -88,7 +88,26 @@ public class ThrowingController : MonoBehaviour {
 
   public Transform GetHodor(GameObject item) {
     int position = GetComponentsInChildren<ItemController>().Length;
-    return position >= 5 ? null : hodors[position];
+    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, Hodors[4].localPosition.y, LayerMask.GetMask("Floor"));
+    int count = 5;
+    if (hit.collider != null)
+    {
+      for (int i = 0; i < 5; i++)
+      {
+        if (Hodors[i].position.y > hit.point.y)
+        {
+          count = i;
+          break;
+        }
+      }
+    }
+    for (int i = count; i < 5; i++)
+    {
+      var ic = Hodors[i].GetComponentInChildren<ItemController>();
+        if (ic != null)
+          ic.Drop();
+    }
+    return position >= count ? null : Hodors[position];
   }
 
   public void Die() {
