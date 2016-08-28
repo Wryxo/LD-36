@@ -12,8 +12,9 @@ public class MachineController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool flying = false;
+	private bool dead = false;
 	private ItemController[] items;
-	private Vector3 initPosition;
+  private Vector3 initPosition;
 
 	private float totalMass;
 	private float airTime;
@@ -36,16 +37,20 @@ public class MachineController : MonoBehaviour {
 	}
 
 	public void Fly() {
-		if (!flying) {
-			flying = true;
+    if (dead) return;
+		if (!flying)
+    {
+      flying = true;
 			rb.isKinematic = false;
 			items = GetComponentsInChildren<ItemController>();
 
 			foreach (ItemController ic in items) {
+        foreach (var KubovPokazenyCollider in ic.GetComponentsInChildren<BoxCollider2D>()) {
+          KubovPokazenyCollider.enabled = false;
+        }
 				totalMass += ic.GetComponent<Rigidbody2D>().mass;
 			}
 		}
-
 		if (Vector3.Distance(initPosition, transform.position) > Vector3.Distance(initPosition, furthestPoint))
 			furthestPoint = transform.position;
 
@@ -63,14 +68,12 @@ public class MachineController : MonoBehaviour {
 
 		if (airTime >= MaxAirTime)
 			die();
-
-		updateUI();
+    updateUI();
 	}
 
-	private void die() {flying = false;
-		flying = false;
-
-		foreach (ItemController ic in items) {
+	private void die() {
+    dead = true;
+    foreach (ItemController ic in items) {
 			if (ic.GetComponent<HingeJoint2D>() != null)
 				ic.GetComponent<HingeJoint2D>().enabled = false;
 		}
@@ -79,7 +82,7 @@ public class MachineController : MonoBehaviour {
 	}
 
 	private void updateUI() {
-		LabelMass.text = string.Format("TOTAL MASS: {0:0.00} + kg", totalMass);
+		LabelMass.text = string.Format("TOTAL MASS: {0:0.00} kg", totalMass);
 		LabelAirborne.text = string.Format("AIRBORNE FOR: {0:0.00}s", airTime);
 		LabelDistance.text = string.Format("TRAVELED: {0:0.00}m", Vector3.Distance(initPosition, furthestPoint));
 	}
