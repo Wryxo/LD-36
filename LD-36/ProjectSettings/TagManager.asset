@@ -10,6 +10,8 @@ TagManager:
   - Bouncy
   - Timer
   - HamsterItem
+  - Level
+  - EndGamePlatform
   layers:
   - Default
   - TransparentFX

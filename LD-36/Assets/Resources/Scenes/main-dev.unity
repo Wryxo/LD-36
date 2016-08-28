@@ -392,6 +392,16 @@ Prefab:
       propertyPath: m_Text
       value: PLAY
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012663018920, guid: 795f3267e66538b4a8c3f8a0064a0c24,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95a05252b5f487e48b1d206d9c14300d,
+        type: 3}
+    - target: {fileID: 1000012597659260, guid: 795f3267e66538b4a8c3f8a0064a0c24, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 795f3267e66538b4a8c3f8a0064a0c24, type: 2}
   m_IsPrefabParent: 0

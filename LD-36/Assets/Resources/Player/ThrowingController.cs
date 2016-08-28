@@ -66,15 +66,8 @@ public class ThrowingController : MonoBehaviour {
         Vector2.up * 40,
         ForceMode2D.Impulse
       );
-      Invoke("die", 2.0f);
+      Invoke("Die", 2.0f);
     }
-  }
-
-  private void die() {
-    transform.position = initPosition;
-    platformMotor.enabled = true;
-    boxCollider.enabled = true;
-    dying = false;
   }
 
   private bool onLayer(GameObject go, string layer) {
@@ -96,5 +89,12 @@ public class ThrowingController : MonoBehaviour {
   public Transform GetHodor(GameObject item) {
     int position = GetComponentsInChildren<ItemController>().Length;
     return position >= 5 ? null : hodors[position];
+  }
+
+  public void Die() {
+    transform.position = initPosition;
+    platformMotor.enabled = true;
+    boxCollider.enabled = true;
+    dying = false;
   }
 }

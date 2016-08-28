@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/main-dev.unity
   - enabled: 1
     path: Assets/Resources/Scenes/wryxo.unity
+  - enabled: 1
+    path: Assets/Resources/Scenes/kubo.unity
