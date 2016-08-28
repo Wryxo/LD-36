@@ -14,7 +14,6 @@ public class StickyController : MonoBehaviour {
 		)
 			return;
 
-    Debug.Log(thisGO.name + " " + otherGO.name);
 		if (onLayer(thisGO, "ItemHamster") && onLayer(otherGO, "StaticItem")) {
 			GameObject.FindGameObjectWithTag("Engine").GetComponent<MachineController>().HamsterCount += 1;
 			Destroy(thisGO);

@@ -12,6 +12,8 @@ TagManager:
   - HamsterItem
   - Level
   - EndGamePlatform
+  - EndGameStats
+  - RestartButton
   layers:
   - Default
   - TransparentFX
