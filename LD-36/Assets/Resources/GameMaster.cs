@@ -61,4 +61,8 @@ public class GameMaster : MonoBehaviour {
   public void GoToMenu() {
     SceneManager.LoadScene(0);
   }
+
+  public void GoToLevel() {
+    SceneManager.LoadScene(1);
+  }
 }
