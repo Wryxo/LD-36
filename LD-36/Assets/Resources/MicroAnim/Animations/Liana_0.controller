@@ -29,7 +29,7 @@ AnimatorState:
   m_PrefabInternal: {fileID: 0}
   m_Name: Liana
   m_Speed: 0.05
-  m_CycleOffset: 0
+  m_CycleOffset: 0.02
   m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
