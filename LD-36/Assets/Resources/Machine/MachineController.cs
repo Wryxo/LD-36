@@ -10,8 +10,10 @@ public class MachineController : MonoBehaviour {
 	public Text LabelDistance;
 	public Animator RestartButtonAnimator;
 	public GameObject HamsterInWheel;
+    public GameObject Score;
+    public GameObject ScorePanel;
 
-	private Rigidbody2D rb;
+    private Rigidbody2D rb;
 	private bool flying = false;
 	private bool dead = false;
 	private ItemController[] items;
@@ -82,8 +84,11 @@ public class MachineController : MonoBehaviour {
 				ic.GetComponent<HingeJoint2D>().enabled = false;
 		}
 
-		RestartButtonAnimator.SetTrigger("Display");
-	}
+        
+        Score.GetComponent<Text>().text = string.Format("0", totalMass*10+airTime*100+ Vector3.Distance(initPosition, furthestPoint));
+        ScorePanel.SetActive(true);
+        RestartButtonAnimator.SetTrigger("Display");
+    }
 
 	private void updateUI() {
 		LabelMass.text = string.Format("TOTAL MASS:\n {0:0.00} kg", totalMass);
