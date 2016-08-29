@@ -686,7 +686,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013763835672, guid: 750a9f17aa3b22348859a258900c2bba, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114000010320020638, guid: 750a9f17aa3b22348859a258900c2bba,
         type: 2}
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06688cd43c5f7f4dad2206cdd93d087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: 180
+  Timer: 4
   FadeScreen: {fileID: 542293184}
   Player: {fileID: 1273138040}
 --- !u!224 &389322780
@@ -1112,7 +1112,7 @@ RectTransform:
   - {fileID: 745543409}
   - {fileID: 2069283125}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
