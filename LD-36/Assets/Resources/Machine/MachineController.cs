@@ -82,8 +82,8 @@ public class MachineController : MonoBehaviour {
 	}
 
 	private void updateUI() {
-		LabelMass.text = string.Format("TOTAL MASS: {0:0.00} kg", totalMass);
-		LabelAirborne.text = string.Format("AIRBORNE FOR: {0:0.00}s", airTime);
-		LabelDistance.text = string.Format("TRAVELED: {0:0.00}m", Vector3.Distance(initPosition, furthestPoint));
+		LabelMass.text = string.Format("TOTAL MASS:\n {0:0.00} kg", totalMass);
+		LabelAirborne.text = string.Format("AIRBORNE FOR:\n {0:0.00}s", airTime);
+		LabelDistance.text = string.Format("TRAVELED:\n {0:0.00}m", Vector3.Distance(initPosition, furthestPoint));
 	}
 }
