@@ -13,6 +13,7 @@ public class ChangeToEndGame : StateMachineBehaviour {
 
     getTagged("MainCamera").GetComponent<CameraFollow>().Target = getTagged("Engine").transform;
     getTagged("MainCamera").GetComponent<CameraFollow>().FollowingPlayer = false;
+    getTagged("MainCamera").GetComponent<Camera>().backgroundColor = new Color(95f / 255f, 205f / 255f, 228f / 255f);
     animator.SetTrigger("Fade In");
 
     GameObject machine = getTagged("Engine");
