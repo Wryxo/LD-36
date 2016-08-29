@@ -16,7 +16,7 @@ public class PlatformController : MonoBehaviour {
   }
 
   private void die() {
-    GameObject item = Instantiate(ItemObject, transform.position, Quaternion.identity) as GameObject;
+    GameObject item = Instantiate(ItemObject, transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Level").transform) as GameObject;
     item.GetComponent<Rigidbody2D>().AddForce(
       Vector2.up * Power,
 			ForceMode2D.Impulse
