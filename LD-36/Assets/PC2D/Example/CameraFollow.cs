@@ -28,7 +28,7 @@ namespace PC2D
       }
       if (FollowingPlayer) { 
         pos.x = Mathf.Clamp(pos.x, -21.0f, 26.2f);
-        pos.y = Mathf.Clamp(pos.y, -6.0f, 12.9f);
+        pos.y = Mathf.Clamp(pos.y, 1.0f, 19.9f);
       }
       transform.position = pos;
     }
