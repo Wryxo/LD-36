@@ -41,6 +41,7 @@ GameObject:
   - 60: {fileID: 60000011921302966}
   - 50: {fileID: 50000012187325660}
   - 114: {fileID: 114000010736919134}
+  - 95: {fileID: 95000011954442070}
   m_Layer: 14
   m_Name: Engine
   m_TagString: Engine
@@ -124,6 +125,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
+--- !u!95 &95000011954442070
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013605122958}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 007ac1da10c8b3546ad70421db6907d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95000013618530210
 Animator:
   serializedVersion: 3
