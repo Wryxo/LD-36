@@ -16,6 +16,7 @@ TagManager:
   - RestartButton
   - CaveBackground
   - OutsideBackground
+  - FadeScreen
   layers:
   - Default
   - TransparentFX

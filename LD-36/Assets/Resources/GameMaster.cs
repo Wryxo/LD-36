@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class GameMaster : MonoBehaviour {
   public static GameMaster Instance = null;
   public float Timer;
-  public GameObject FadeScreen;
-  public GameObject Player;
 
   private float timeLeft;
   private bool timeOn;
@@ -54,8 +52,8 @@ public class GameMaster : MonoBehaviour {
 
   public void EndGame() {
     textGO.enabled = false;
-    Player.GetComponent<PlatformerMotor2D>().enabled = false;
-    FadeScreen.GetComponent<Animator>().SetTrigger("Fade Out");
+    GameObject.FindGameObjectWithTag("Player").GetComponent<PlatformerMotor2D>().enabled = false;
+    GameObject.FindGameObjectWithTag("FadeScreen").GetComponent<Animator>().SetTrigger("Fade Out");
   }
 
   public void GoToMenu() {
