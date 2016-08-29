@@ -24,6 +24,9 @@ public class ChangeToEndGame : StateMachineBehaviour {
 
 		getTagged("EndGameStats").GetComponent<Animator>().SetTrigger("Display");
 
+		getTagged("CaveBackground").SetActive(false);
+		getTagged("OutsideBackground").transform.GetChild(0).gameObject.SetActive(true);
+
 		triggered = true;
 	}
 
