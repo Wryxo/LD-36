@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Flying : MonoBehaviour {
   private float facing;
@@ -32,7 +31,7 @@ public class Flying : MonoBehaviour {
 
   void OnTriggerEnter2D(Collider2D collision) {
     if (collision.gameObject.layer == LayerMask.NameToLayer("Item") && !isMoving(collision.gameObject)) {
-      die(); 
+      die();
     }
   }
 
@@ -41,6 +40,7 @@ public class Flying : MonoBehaviour {
   }
 
   private void die() {
+    GetComponent<FlyingHamsterSoundController>().SoundHit();
     /* dirty fix */
     GetComponent<SpriteRenderer>().enabled = false;
     Vector3 position = transform.position;

@@ -39,21 +39,25 @@ public class MachineController : MonoBehaviour {
 
 	public void Fly() {
     if (dead) return;
-		if (!flying)
-    {
+		if (!flying) {
       flying = true;
 			rb.isKinematic = false;
 			items = GetComponentsInChildren<ItemController>();
 
+			bool hasFan = false;
 			foreach (ItemController ic in items) {
-        foreach (var KubovPokazenyCollider in ic.GetComponentsInChildren<BoxCollider2D>()) {
-          KubovPokazenyCollider.enabled = false;
+        foreach (BoxCollider2D collider in ic.GetComponentsInChildren<BoxCollider2D>()) {
+          collider.enabled = false;
           if (ic.tag == "Bouncy") {
           	ic.GetComponent<Animator>().SetTrigger("Turn It Up!");
+						hasFan = true;
           }
         }
 				totalMass += ic.GetComponent<Rigidbody2D>().mass;
 			}
+
+			if (hasFan)
+				GetComponent<MachineSoundController>().Flying = true;
 		}
 		if (Vector3.Distance(initPosition, transform.position) > Vector3.Distance(initPosition, furthestPoint))
 			furthestPoint = transform.position;
@@ -81,6 +85,8 @@ public class MachineController : MonoBehaviour {
 			if (ic.GetComponent<HingeJoint2D>() != null)
 				ic.GetComponent<HingeJoint2D>().enabled = false;
 		}
+
+		GetComponent<MachineSoundController>().Dead = true;
 
 		RestartButtonAnimator.SetTrigger("Display");
 	}

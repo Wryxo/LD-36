@@ -21,8 +21,9 @@ public class ChangeToEndGame : StateMachineBehaviour {
 		foreach (Collider2D col in endGameColliders) {
 			col.enabled = true;
 		}
-		getTagged("EndGamePlatform").transform.GetChild(0).gameObject.SetActive(true);
+		machine.GetComponent<AudioListener>().enabled = true;
 
+		getTagged("EndGamePlatform").transform.GetChild(0).gameObject.SetActive(true);
 		getTagged("EndGameStats").GetComponent<Animator>().SetTrigger("Display");
 
 		//getTagged("CaveBackground").SetActive(false);

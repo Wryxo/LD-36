@@ -4,6 +4,10 @@ public class StickyController : MonoBehaviour {
 	public float BouncePower, BounceAngle;
 	private bool stuck = false;
 
+	void OnCollisionEnter2D(Collision2D collision) {
+		GetComponent<ItemSoundController>().SoundHit();
+	}
+
 	void OnTriggerEnter2D(Collider2D collider) {
     GameObject thisGO = transform.parent.gameObject;
     GameObject otherGO = collider.gameObject;
@@ -15,8 +19,11 @@ public class StickyController : MonoBehaviour {
 			return;
 
 		if (onLayer(thisGO, "ItemHamster") && onLayer(otherGO, "StaticItem")) {
-			GameObject.FindGameObjectWithTag("Engine").GetComponent<MachineController>().HamsterCount += 1;
-			GameObject.FindGameObjectWithTag("Engine").GetComponent<MachineController>().EnableHamsterPower();
+			GameObject engine = GameObject.FindGameObjectWithTag("Engine");
+			engine.GetComponent<MachineController>().HamsterCount += 1;
+			engine.GetComponent<MachineController>().EnableHamsterPower();
+
+			GetComponent<HamsterItemSoundController>().SoundStore();
 			Destroy(thisGO);
 		} else if (!onLayer(thisGO, "ItemHamster") && otherGO.tag == "Bouncy") {
 			float direction = BounceAngle / 180 * Mathf.PI;
@@ -85,6 +92,8 @@ public class StickyController : MonoBehaviour {
 
 			thisGO.GetComponent<HingeJoint2D>().connectedBody = otherGO.GetComponent<Rigidbody2D>();
 			thisGO.GetComponent<HingeJoint2D>().enabled = true;
+
+			GetComponent<ItemSoundController>().SoundHit();
 
 			stuck = true;
 		}

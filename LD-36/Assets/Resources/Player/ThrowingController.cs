@@ -66,6 +66,7 @@ public class ThrowingController : MonoBehaviour {
         Vector2.up * 40,
         ForceMode2D.Impulse
       );
+      GetComponent<PlayerSoundController>().SoundHit();
       Invoke("Die", 2.0f);
     }
   }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CharacterController : MonoBehaviour {
   private float direction;
@@ -21,6 +20,10 @@ public class CharacterController : MonoBehaviour {
       direction *= -1;
       transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
     } else if (collision.gameObject.layer == LayerMask.NameToLayer("Item") && !isMoving(collision.gameObject)) {
+      if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        GetComponent<EnemySoundController>().SoundHit();
+      else if (gameObject.layer == LayerMask.NameToLayer("Hamster"))
+        GetComponent<HamsterSoundController>().SoundHit();
       die();
     }
   }
