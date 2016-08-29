@@ -25,6 +25,7 @@ public class ChangeToEndGame : StateMachineBehaviour {
 
 		getTagged("EndGameStats").GetComponent<Animator>().SetTrigger("Display");
 
+        //commented since parallax is turned off in main level (to avoid null exceptions)
 		//getTagged("CaveBackground").SetActive(false);
 		getTagged("OutsideBackground").transform.GetChild(0).gameObject.SetActive(true);
 
