@@ -92,7 +92,7 @@ public class MachineController : MonoBehaviour {
 		}
 
         
-        Score.GetComponent<Text>().text = string.Format("0", totalMass*10+airTime*100+ Vector3.Distance(initPosition, furthestPoint));
+        Score.GetComponent<Text>().text = "" + (int)(totalMass *10+airTime*100+ Vector3.Distance(initPosition, furthestPoint));
         ScorePanel.SetActive(true);
         RestartButtonAnimator.SetTrigger("Display");
     }
