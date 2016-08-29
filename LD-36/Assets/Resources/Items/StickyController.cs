@@ -75,6 +75,9 @@ public class StickyController : MonoBehaviour {
 			thisGO.layer = LayerMask.NameToLayer("StaticItem");
 			gameObject.layer = LayerMask.NameToLayer("StaticItem");
 			thisGO.tag = thisGO.tag == "Fan" ? "Bouncy" : "Sticky";
+			if (thisGO.tag == "Bouncy") {
+				thisGO.GetComponent<Animator>().SetTrigger("Slowly");
+			}
 			thisGO.transform.position = new Vector3(
 				thisGO.transform.position.x, thisGO.transform.position.y, -2f
 			);

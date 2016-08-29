@@ -1,13 +1,17 @@
 fileFormatVersion: 2
-guid: fad6b84834ccccb488367fe5359a8e9f
-timeCreated: 1472347680
+guid: 7113d8505d69e47488a0a343428b8cc0
+timeCreated: 1472438144
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fan_up_0
-    21300002: Fan_up_1
-    21300004: Fan_up_2
-    21300006: Fan_up_3
+    21300000: Hamster_fan_0
+    21300002: Hamster_fan_1
+    21300004: Hamster_fan_2
+    21300006: Hamster_fan_3
+    21300008: Hamster_fan_4
+    21300010: Hamster_fan_5
+    21300012: Hamster_fan_6
+    21300014: Hamster_fan_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,52 +61,104 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fan_up_0
+      name: Hamster_fan_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
-        height: 15
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fan_up_1
+      name: Hamster_fan_1
       rect:
         serializedVersion: 2
-        x: 15
+        x: 32
         y: 0
-        width: 15
-        height: 15
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fan_up_2
+      name: Hamster_fan_2
       rect:
         serializedVersion: 2
-        x: 30
+        x: 64
         y: 0
-        width: 15
-        height: 15
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Fan_up_3
+      name: Hamster_fan_3
       rect:
         serializedVersion: 2
-        x: 45
+        x: 96
         y: 0
-        width: 15
-        height: 15
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hamster_fan_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hamster_fan_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hamster_fan_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hamster_fan_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -47,6 +47,9 @@ public class MachineController : MonoBehaviour {
 			foreach (ItemController ic in items) {
         foreach (var KubovPokazenyCollider in ic.GetComponentsInChildren<BoxCollider2D>()) {
           KubovPokazenyCollider.enabled = false;
+          if (ic.tag == "Bouncy") {
+          	ic.GetComponent<Animator>().SetTrigger("Turn It Up!");
+          }
         }
 				totalMass += ic.GetComponent<Rigidbody2D>().mass;
 			}
