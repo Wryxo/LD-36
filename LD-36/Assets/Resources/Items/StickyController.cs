@@ -16,6 +16,7 @@ public class StickyController : MonoBehaviour {
 
 		if (onLayer(thisGO, "ItemHamster") && onLayer(otherGO, "StaticItem")) {
 			GameObject.FindGameObjectWithTag("Engine").GetComponent<MachineController>().HamsterCount += 1;
+			GameObject.FindGameObjectWithTag("Engine").GetComponent<MachineController>().EnableHamsterPower();
 			Destroy(thisGO);
 		} else if (!onLayer(thisGO, "ItemHamster") && otherGO.tag == "Bouncy") {
 			float direction = BounceAngle / 180 * Mathf.PI;

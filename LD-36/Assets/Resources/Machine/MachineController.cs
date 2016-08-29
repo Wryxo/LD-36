@@ -9,6 +9,7 @@ public class MachineController : MonoBehaviour {
 	public Text LabelAirborne;
 	public Text LabelDistance;
 	public Animator RestartButtonAnimator;
+	public GameObject HamsterInWheel;
 
 	private Rigidbody2D rb;
 	private bool flying = false;
@@ -88,5 +89,9 @@ public class MachineController : MonoBehaviour {
 		LabelMass.text = string.Format("TOTAL MASS:\n {0:0.00} kg", totalMass);
 		LabelAirborne.text = string.Format("AIRBORNE FOR:\n {0:0.00}s", airTime);
 		LabelDistance.text = string.Format("TRAVELED:\n {0:0.00}m", Vector3.Distance(initPosition, furthestPoint));
+	}
+
+	public void EnableHamsterPower() {
+		HamsterInWheel.SetActive(true);
 	}
 }
