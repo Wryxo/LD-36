@@ -15,7 +15,7 @@ public class MachineController : MonoBehaviour {
 	private bool flying = false;
 	private bool dead = false;
 	private ItemController[] items;
-  private Vector3 initPosition;
+  	private Vector3 initPosition;
 
 	private float totalMass;
 	private float airTime;
@@ -50,6 +50,13 @@ public class MachineController : MonoBehaviour {
           KubovPokazenyCollider.enabled = false;
           if (ic.tag == "Bouncy") {
           	ic.GetComponent<Animator>().SetTrigger("Turn It Up!");
+          }
+          if (HamsterCount > 0) {
+	          GetComponent<Animator>().SetTrigger("StartUp");
+	          var ha = GetComponentInChildren<Animator>();
+	          if (ha != null) {
+	          	ha.GetComponent<Animator>().SetTrigger("StartUp");
+	          }
           }
         }
 				totalMass += ic.GetComponent<Rigidbody2D>().mass;
