@@ -10,12 +10,14 @@ public class MachineController : MonoBehaviour {
 	public Text LabelDistance;
 	public Animator RestartButtonAnimator;
 	public GameObject HamsterInWheel;
+    public GameObject Score;
+    public GameObject ScorePanel;
 
-	private Rigidbody2D rb;
+    private Rigidbody2D rb;
 	private bool flying = false;
 	private bool dead = false;
 	private ItemController[] items;
-  private Vector3 initPosition;
+  	private Vector3 initPosition;
 
 	private float totalMass;
 	private float airTime;
@@ -52,6 +54,13 @@ public class MachineController : MonoBehaviour {
           	ic.GetComponent<Animator>().SetTrigger("Turn It Up!");
 						hasFan = true;
           }
+          if (HamsterCount > 0) {
+	          GetComponent<Animator>().SetTrigger("StartUp");
+	          var ha = GetComponentInChildren<Animator>();
+	          if (ha != null) {
+	          	ha.GetComponent<Animator>().SetTrigger("StartUp");
+	          }
+          }
         }
 				totalMass += ic.GetComponent<Rigidbody2D>().mass;
 			}
@@ -86,9 +95,11 @@ public class MachineController : MonoBehaviour {
 				ic.GetComponent<HingeJoint2D>().enabled = false;
 		}
 
-		GetComponent<MachineSoundController>().Dead = true;
-
+		Score.GetComponent<Text>().text = "" + (int)(totalMass *10+airTime*100+ Vector3.Distance(initPosition, furthestPoint));
+		ScorePanel.SetActive(true);
 		RestartButtonAnimator.SetTrigger("Display");
+
+		GetComponent<MachineSoundController>().Dead = true;
 	}
 
 	private void updateUI() {

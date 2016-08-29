@@ -1,21 +1,21 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ThrowingController : MonoBehaviour {
-	public float Power, Angle;
-	public GameObject Hodor;
+  public float Power, Angle;
+  public GameObject Hodor;
   public List<Transform> Hodors = new List<Transform>();
 
   private Vector2 initPosition;
   private bool dying;
-	private int facing = 1;
+  private int facing = 1;
   private Rigidbody2D rb;
   private PlatformerMotor2D platformMotor;
   private BoxCollider2D boxCollider;
 
   void Start () {
     initPosition = transform.position;
-		rb = GetComponent<Rigidbody2D>();
+    rb = GetComponent<Rigidbody2D>();
     platformMotor = GetComponent<PlatformerMotor2D>();
     boxCollider = GetComponent<BoxCollider2D>();
 
@@ -41,7 +41,7 @@ public class ThrowingController : MonoBehaviour {
         fireAllItems();
       }
     }
-	}
+  }
 
   void OnTriggerEnter2D(Collider2D collision) {
     // hit enemy
@@ -60,6 +60,7 @@ public class ThrowingController : MonoBehaviour {
       // throw player
       platformMotor.enabled = false;
       boxCollider.enabled = false;
+      GameObject.Find("Main Camera").GetComponent<PC2D.CameraFollow>().Target = null;
 
       rb.velocity = Vector3.zero;
       rb.AddForce(
@@ -115,6 +116,7 @@ public class ThrowingController : MonoBehaviour {
     transform.position = initPosition;
     platformMotor.enabled = true;
     boxCollider.enabled = true;
+    GameObject.Find("Main Camera").GetComponent<PC2D.CameraFollow>().Target = transform;
     dying = false;
   }
 }

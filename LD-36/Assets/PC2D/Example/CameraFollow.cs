@@ -14,7 +14,6 @@ namespace PC2D
     void Update()
     {
       if (!Target) {
-        Debug.Log("NIKOHO NEMAM!");
         return;
       }
       Vector3 pos = transform.position;
