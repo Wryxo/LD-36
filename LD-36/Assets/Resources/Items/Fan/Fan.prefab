@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bc06d85e4eaab4f8e028475690aaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BouncePower: 20
+  BouncePower: 5
   BounceAngle: 45
 --- !u!212 &212000010780436970
 SpriteRenderer:
