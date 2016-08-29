@@ -46,8 +46,8 @@ public class Flying : MonoBehaviour {
     Vector3 position = transform.position;
     transform.position = new Vector3(5000,5000,-5000);
     /**/
-    Instantiate(HamsterObject, position, Quaternion.identity);
-    Instantiate(FanObject, position, Quaternion.identity);
+    Instantiate(HamsterObject, position, Quaternion.identity, GameObject.FindGameObjectWithTag("Level").transform);
+    Instantiate(FanObject, position, Quaternion.identity, GameObject.FindGameObjectWithTag("Level").transform);
     Destroy(gameObject);
   }
 }
