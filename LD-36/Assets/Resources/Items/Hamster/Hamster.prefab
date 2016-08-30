@@ -59,7 +59,7 @@ GameObject:
   - 4: {fileID: 4000013507863708}
   - 82: {fileID: 82000011761533652}
   m_Layer: 15
-  m_Name: AudioStep
+  m_Name: AudioStore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 249bda415f1e40d4fa99f2ce9708aaf3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cf0980b76e48c1a40a142025dc3fa013, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
