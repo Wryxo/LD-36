@@ -55,10 +55,8 @@ public class MachineController : MonoBehaviour {
 						hasFan = true;
           }
           if (HamsterCount > 0) {
-	          GetComponent<Animator>().SetTrigger("StartUp");
-	          var ha = GetComponentInChildren<Animator>();
-	          if (ha != null) {
-	          	ha.GetComponent<Animator>().SetTrigger("StartUp");
+	          foreach (var ac in GetComponentsInChildren<Animator>(true)) {
+	          	ac.SetTrigger("StartUp");
 	          }
           }
         }

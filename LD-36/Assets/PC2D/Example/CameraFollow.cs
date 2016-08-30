@@ -26,8 +26,18 @@ namespace PC2D
         pos.y = Target.position.y - ((Target.position.y > transform.position.y) ? OffsetY : -OffsetY);
       }
       if (FollowingPlayer) { 
-        pos.x = Mathf.Clamp(pos.x, -21.0f, 26.2f);
-        pos.y = Mathf.Clamp(pos.y, 1.0f, 19.9f);
+        float aspect = GetComponent<Camera>().aspect;
+        if (aspect == 4f/3f) {
+          pos.x = Mathf.Clamp(pos.x, -26.3f, 31.4f);
+          pos.y = Mathf.Clamp(pos.y, 1.0f, 19.9f);
+        } else if (aspect == 16f/10f) {
+          pos.x = Mathf.Clamp(pos.x, -23.0f, 28.25f);
+          pos.y = Mathf.Clamp(pos.y, 1.0f, 19.9f);
+        }
+        else {
+          pos.x = Mathf.Clamp(pos.x, -21.0f, 26.25f);
+          pos.y = Mathf.Clamp(pos.y, 1.0f, 19.9f);
+        }
       }
       transform.position = pos;
     }
