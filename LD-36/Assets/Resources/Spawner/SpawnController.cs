@@ -71,7 +71,6 @@ public class SpawnController : MonoBehaviour {
         candidates.Add(i);
       }
     }
-    Debug.Log(transform.childCount + " " + candidates.Count + " " + first);
     int spawn = Random.Range(0, candidates.Count);
     var tp = transform.GetChild(spawn).transform.position;
     return new Vector3(tp.x, tp.y, 0);
